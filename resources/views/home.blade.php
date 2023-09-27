@@ -1,7 +1,18 @@
 <x-layout>
 
-
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+<nav class="bg-gray-800 text-white py-4 mb-10">
+    <div class="container mx-auto flex justify-between items-center">
+        <div>
+            <a href="{{route('home.list')}}" class="text-2xl font-bold p-4">Library</a>
+        </div>
+        <div class="space-x-6 p-4">
+            <a href="{{route('home.list')}}" class="hover:text-gray-500">List of Books</a>
+            <a href="#" class="hover:text-gray-500">Authors</a>
+            <a href="#" class="hover:text-gray-500">Search</a>
+        </div>
+    </div>
+</nav>
+<div class="relative overflow-x-auto p-6">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
      <x-books-table-header/>
         <tbody>
@@ -25,9 +36,7 @@
                 </td>
                 @endif
                 <td class="px-6 py-4">
-                    <form method="PUT" action="#">
-                        <button type="submit" class="text-green-700">Edit</button>
-                    </form>
+                    <a href="{{route('book.editForm', $book->id)}}" class="text-green-700">Edit</a>
                 </td>
                 <td class="px-6 py-4">
                     <form action="{{route('book.destroy', $book->id)}}" method="post">

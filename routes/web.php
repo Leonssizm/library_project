@@ -19,4 +19,6 @@ Route::view('/','landing');
 Route::controller(BookController::class)->group(function(){
     Route::get('home', 'index')->name('home.list');
     Route::delete('book/{book}', 'destroy')->name('book.destroy');
+    Route::get('book/{book}', 'showEditForm')->name('book.editForm');
+    Route::post('book/{book}', 'update')->name('book.update');
 });
