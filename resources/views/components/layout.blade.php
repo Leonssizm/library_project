@@ -7,7 +7,7 @@
         <title>Library</title>
     </head>
     <body>
-        <div class="h-full">
+        <div class="h-full ">
             {{$slot}}
         </div>
     </body>

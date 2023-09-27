@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -13,6 +15,26 @@ class BookController extends Controller
         return view ('home', [
             'books' => Book::all(),
         ]);
+    }
+
+    public function store(StoreBookRequest $request)
+    {
+        $authorNamesString = $request->input('author');
+
+        $authorNames = explode(',', $authorNamesString);
+        $authorNames = array_map('trim', $authorNames);
+        $authorNames = array_unique($authorNames);
+    
+        $authorIds = [];
+        foreach ($authorNames as $authorName) {
+            $author = Author::firstOrCreate(['name' => $authorName]);
+    
+            $authorIds[] = $author->id;
+        }
+        $book = Book::create($request->validated());
+        $book->authors()->sync($authorIds);
+
+        return route('home.list');
     }
 
     public function showEditForm(Book $book):View 

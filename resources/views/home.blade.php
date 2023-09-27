@@ -1,17 +1,10 @@
+<div class="bg-gradient-to-t from-slate-900 via-purple-900 to-slate-900">
 <x-layout>
+<x-home-navigation/>
 
-<nav class="bg-gray-800 text-white py-4 mb-10">
-    <div class="container mx-auto flex justify-between items-center">
-        <div>
-            <a href="{{route('home.list')}}" class="text-2xl font-bold p-4">Library</a>
-        </div>
-        <div class="space-x-6 p-4">
-            <a href="{{route('home.list')}}" class="hover:text-gray-500">List of Books</a>
-            <a href="#" class="hover:text-gray-500">Authors</a>
-            <a href="#" class="hover:text-gray-500">Search</a>
-        </div>
-    </div>
-</nav>
+<div class="ml-6">
+<a href="{{route('book.addForm')}}" class="bg-red-800 hover:bg-red-900 text-white font-semibold py-3 px-6 transition duration-300 ease-in-out transform hover:scale-105">Add new book</a>
+</div>
 <div class="relative overflow-x-auto p-6">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
      <x-books-table-header/>
@@ -38,16 +31,17 @@
                 <td class="px-6 py-4">
                     <a href="{{route('book.editForm', $book->id)}}" class="text-green-700">Edit</a>
                 </td>
+                <form action="{{route('book.destroy', $book->id)}}" method="post">
                 <td class="px-6 py-4">
-                    <form action="{{route('book.destroy', $book->id)}}" method="post">
                         <button type="submit" class="text-red-700">Delete</button>
                         @method('DELETE')
                         @csrf
-                    </form>
-                </td>
+                    </td>
+                </form>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
 </x-layout>
+</div>
