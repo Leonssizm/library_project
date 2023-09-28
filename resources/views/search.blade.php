@@ -2,7 +2,7 @@
 <x-layout>
 <x-home-navigation/>
 <form action="{{ route('book.search') }}" method="GET">
-    <div class="ml-7 flex items-center py-2 border-b border-b-2 border-teal-500 w-1/4">
+    <div class="ml-7 flex items-center py-2 border-b-2 border-teal-500 w-1/4">
         <input
             class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
             type="text"
