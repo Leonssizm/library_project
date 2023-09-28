@@ -2,9 +2,22 @@
 <x-layout>
 <x-home-navigation/>
 
-<div class="ml-6">
-<a href="{{route('book.addForm')}}" class="bg-red-800 hover:bg-red-900 text-white font-semibold py-3 px-6 transition duration-300 ease-in-out transform hover:scale-105">Add new book</a>
-</div>
+<form action="{{ route('book.search') }}" method="GET">
+    <div class="ml-7 flex items-center py-2 border-b border-b-2 border-teal-500 w-1/4">
+        <input
+            class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+            type="text"
+            name="search"
+            placeholder="Search books by title or author"
+        >
+        <button
+            class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+            type="submit"
+        >
+            Search
+        </button>
+    </div>
+</form>
 <div class="relative overflow-x-auto p-6">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
      <x-books-table-header/>
@@ -14,7 +27,6 @@
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$book->title}}
                 </th>
-               
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     @foreach($book->authors as $index => $author)
                         {{$author->name}}{{ $index < count($book->authors) - 1 ? ', ' : '' }}
@@ -46,6 +58,5 @@
             @endforeach
         </tbody>
     </table>
-</div>
 </x-layout>
 </div>

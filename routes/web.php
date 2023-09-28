@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/','landing');
-Route::view('book/add', 'add-book')->name('book.addForm');
+Route::view('book/add', 'forms.add-book')->name('book.addForm');
+Route::view('/search', 'search')->name('search');
 
 Route::controller(BookController::class)->group(function(){
     Route::get('home', 'index')->name('home.list');
@@ -24,6 +25,7 @@ Route::controller(BookController::class)->group(function(){
     Route::get('book/{book}', 'showEditForm')->name('book.editForm');
     Route::post('book/{book}', 'update')->name('book.update');
     Route::post('store', 'store')->name('book.store');
+    Route::get('books/search', 'search')->name('book.search');
 });
 
 Route::controller(AuthorController::class)->group(function(){

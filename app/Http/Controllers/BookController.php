@@ -39,7 +39,7 @@ class BookController extends Controller
 
     public function showEditForm(Book $book):View 
     {
-        return view('edit-book', [
+        return view('forms.edit-book', [
             'book' => $book,
         ]);
     }
@@ -55,6 +55,15 @@ class BookController extends Controller
     {
         $book->delete();
         return back();
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        $books = Book::search($searchTerm)->get();
+
+        return view('search-results', compact('books', 'searchTerm'));
     }
 
 

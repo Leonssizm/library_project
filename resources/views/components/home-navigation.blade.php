@@ -6,7 +6,7 @@
         <div class="space-x-6 p-4">
             <a href="{{route('home.list')}}" class="hover:text-gray-500">List of Books</a>
             <a href="{{route('authors.list')}}" class="hover:text-gray-500">List of Authors</a>
-            <a href="#" class="hover:text-gray-500">Search</a>
+            <a href="{{route('search')}}" class="hover:text-gray-500">Search</a>
         </div>
     </div>
 </nav>

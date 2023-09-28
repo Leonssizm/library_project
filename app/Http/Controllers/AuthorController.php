@@ -16,7 +16,7 @@ class AuthorController extends Controller
     }
     public function showEditForm(Author $author):View 
     {
-        return view('edit-author', [
+        return view('forms.edit-author', [
             'author' => $author,
         ]);
     }
