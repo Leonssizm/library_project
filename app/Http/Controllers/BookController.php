@@ -34,7 +34,7 @@ class BookController extends Controller
         $book = Book::create($request->validated());
         $book->authors()->sync($authorIds);
 
-        return route('home.list');
+        return redirect()->route('home.list');
     }
 
     public function showEditForm(Book $book):View 
